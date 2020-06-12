@@ -1,38 +1,28 @@
 def jg_forca():
-    print("**********************")
-    print("Bem vindo ao Forca!")
-    print("**********************", end="\n\n")
+    print("***********************")
+    print("  Bem vindo ao Forca!  ")
+    print("***********************", end="\n\n")
 
-    sec_word = "banana"
-    tentativas = 0
-    nivel = int(input("Escolha a dificuldade do jogo.(1) Fácil  (2) Médio  (3) Difícil: "))
-
-    if nivel == 1:
-        tentativas = 20
-    elif nivel == 2:
-        tentativas = 10
-    else:
-        tentativas = 5
-
+    palavra_secreta,tipo = input('Qual a palavra e o tipo: ').split()
+    print(f'Dica: a palavra secreta tem {len(palavra_secreta)} letras, e eh um(a) {tipo}. Boa sorte.')
+    
     enforcou = False
     acertou = False
-
-    # enquanto (True and True) 
+    # enquanto True e True 
     while not enforcou and not acertou:
+        lista = []
+        chute = input('Qual letra?: ')
+        chute = chute.strip()
 
-        chute = input("Digite uma letra: ")
-
+        lista = []
         index = 0
-        for letra in sec_word:
-            if chute == letra:
-                print("A letra {} estra na posição {}".format(letra, index))
+        for letra in palavra_secreta:
+            if chute.upper() == letra.upper():
+                print(f'Encontrei a letra "{letra}" na posicao {index}.')
             index = index + 1
+        print('Jogando...')
 
-        print("Jogando...")
-    for rodada in range(1, tentativas + 1):
-        print("Tentativa {} de {}".format(rodada, tentativas, end="\n\n"))
+    print('Fim do Jogo')
 
-    print("Fim!")
-
-if __name__ == "__main__":
+if(__name__ == '__main__'):
     jg_forca()
