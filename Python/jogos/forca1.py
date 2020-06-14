@@ -1,38 +1,46 @@
-def jg_forca():
-    print("**********************")
-    print("Bem vindo ao Forca!")
-    print("**********************", end="\n\n")
+def jogar():
+    import getpass
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
 
-    sec_word = "banana"
-    tentativas = 0
-    nivel = int(input("Escolha a dificuldade do jogo.(1) Fácil  (2) Médio  (3) Difícil: "))
+    palavra_secreta = getpass.getpass('Digite a palavra secreta: ').upper()
+    size = len(palavra_secreta)
+    print(f'Dica: a palavra tem {size} letras')
+    
+    letras_acertadas = []
+    for i in range(size):
+        letras_acertadas.append('_')
+    
+    print(letras_acertadas)
 
-    if nivel == 1:
-        tentativas = 20
-    elif nivel == 2:
-        tentativas = 10
+    erros = 0
+    while(True):
+
+        chute = input("Qual letra? ")
+        chute = chute.strip().upper()
+
+        if(chute in palavra_secreta):
+            index = 0
+            for letra in palavra_secreta:
+                if(chute == letra):
+                    letras_acertadas[index] = letra
+                index += 1
+        else:
+            erros += 1
+
+        if (erros == 6):
+            break
+        if ("_" not in letras_acertadas):
+            break
+        print(letras_acertadas)
+
+
+    if("_" not in letras_acertadas):
+        print("Você ganhou!!")
     else:
-        tentativas = 5
-
-    enforcou = False
-    acertou = False
-
-    # enquanto (True and True) 
-    while not enforcou and not acertou:
-
-        chute = input("Digite uma letra: ")
-
-        index = 0
-        for letra in sec_word:
-            if chute == letra:
-                print("A letra {} estra na posição {}".format(letra, index))
-            index = index + 1
-
-        print("Jogando...")
-    for rodada in range(1, tentativas + 1):
-        print("Tentativa {} de {}".format(rodada, tentativas, end="\n\n"))
-
-    print("Fim!")
+        print("Você perdeu!!")
+    print("Fim do jogo")
 
 if __name__ == "__main__":
-    jg_forca()
+    jogar()

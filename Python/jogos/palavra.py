@@ -9,8 +9,13 @@ def palavra_secreta():
     elif tipo == '2':
         escolha_random = random.choice(lista_eletronico)
 
-    print(escolha_random)
-
 if(__name__ == '__main__'):
     palavra_secreta()
 
+
+'''
+
+nomeIdade = {'Paulo' : 29, 'Maria' : 27, 'Marcos' : 52}
+
+print(nomeIdade['Maria'])
+print(nomeIdade['Maria'])'''
