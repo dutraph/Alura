@@ -10,3 +10,4 @@ arquivo
 for i in arquivo:
     print(i)
 arquivo.close()
+arquivo.
