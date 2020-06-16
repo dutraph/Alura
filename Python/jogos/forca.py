@@ -18,16 +18,13 @@ def carrega_pal_sec():
 def jg_forca():
 
     mensagem_abertura()
-
     # ESCOLHA ALEATORIA DA PALVRA E TIPO 
     palavra_secreta = carrega_pal_sec()
     size = len(palavra_secreta)
     print(f'Dica: a palavra tem {size} letras. e é uma Fruta.', end='\n\n')
-
     # GERANDO ESPAÇOS VAZIOS
     letras_acertadas = ['_' for letra in palavra_secreta]  
     print(letras_acertadas) # OU 
-
     #letras_acertadas = []
     #for i in range(size):
     #   letras_acertadas.append('_')
