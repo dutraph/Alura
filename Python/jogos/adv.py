@@ -1,5 +1,5 @@
 from random import randint
-
+import menu_jogos
 def jg_adv():
 
     print("**********************")
@@ -20,12 +20,12 @@ def jg_adv():
         tentativas = 5
 
     for rodada in range(1, tentativas + 1):
-        print("Tentativa {} de {}".format(rodada, tentativas, end="\n\n"))
+        print(f"Tentativa {rodada} de {tentativas}", end="\n\n")
         chute = int(input("Digite um número entre 1 e 5: "))
         print("Seu chute foi: ", chute, end="\n\n")
 
-        if chute < 1 or chute > 5:
-            print("Alerta! Voce deve digitar um numero entre 1 e 5", end="\n\n")
+        if chute < 0 or chute > 5:
+            print("Alerta! Voce deve digitar um numero entre 0 e 5", end="\n\n")
             continue
 
         certo = sec_num == chute
@@ -44,6 +44,11 @@ def jg_adv():
             pts = pts - pts_perd
 
     print("Fim!")
+    askJogar = int(input('Deseja jogar novamente: (1)Adivinha (2)Menu de Jogos.'))
+    if askJogar == 1:
+        jg_adv()
+    else: 
+        menu_jogos.escolhe_jogos()
 if __name__ == "__main__":
     jg_adv()
 

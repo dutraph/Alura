@@ -1,27 +1,37 @@
-def jg_forca():
-    import getpass
-    import palavra
+import random
+import menu_jogos
+
+def mensagem_abertura():
     print("***********************")
     print("  Bem vindo ao Forca!  ")
     print("***********************", end="\n\n")
 
-    #palavra_secreta,tipo = input('Qual a palavra e o tipo: ').split()
-    #print(f'Dica: a palavra secreta tem {len(palavra_secreta)} letras, e eh um(a) {tipo}. Boa sorte.')
+def carrega_pal_sec():
+    palavras = []
+    with open('frutas.txt', 'r') as arquivo:
+        for i in arquivo:
+            palavras.append(i.strip())
+    palavra_secreta = (random.choice(palavras)).upper()
+    #size = len(palavra_secreta)
+    return palavra_secreta
 
-    palavra_secreta = palavra.palavra_secreta()
-    '''palavra_secreta = getpass.getpass('Digite a palavra secreta: ').upper()
+def jg_forca():
+
+    mensagem_abertura()
+
+    # ESCOLHA ALEATORIA DA PALVRA E TIPO 
+    palavra_secreta = carrega_pal_sec()
     size = len(palavra_secreta)
-    print(f'Dica: a palavra tem {size} letras')
-    '''
+    print(f'Dica: a palavra tem {size} letras. e é uma Fruta.', end='\n\n')
+
+    # GERANDO ESPAÇOS VAZIOS
+    letras_acertadas = ['_' for letra in palavra_secreta]  
+    print(letras_acertadas) # OU 
+
     #letras_acertadas = []
     #for i in range(size):
     #   letras_acertadas.append('_')
-    # OU
-    print(palavra_secreta)
-    letras_acertadas = ['_' for letra in palavra_secreta]
 
-    print(letras_acertadas)
-    
     enforcou = False
     acertou = False
     erros = 0
@@ -31,15 +41,13 @@ def jg_forca():
         chute = input('Qual letra?: ')
         chute = chute.strip().upper()
     
-
         if chute in palavra_secreta:
             index = 0
             for letra in palavra_secreta:
                 if chute == letra:
                     letras_acertadas[index] = letra
-                    print(f'Encontrei a letra "{letra}" na posicao {index}.')
-                index += 1 
-            
+                    print(f'Encontrei a letra "{letra}" na posicao {index}.', end='\n\n')
+                index += 1        
         else:
             erros += 1
         acertou = '_' not in letras_acertadas
@@ -51,7 +59,14 @@ def jg_forca():
     else:
         print('Voce perdeu')
 
-    print('Fim do Jogo')
+    print('Fim do Jogo', end='\n\n')
+    askJogar = int(input('Deseja jogar novamente: (1)Forca (2)Menu de Jogos.'))
+    if askJogar == 1:
+        jg_forca()
+    else: 
+        menu_jogos.escolhe_jogos()
+            
+        
 
 if(__name__ == '__main__'):
     jg_forca()

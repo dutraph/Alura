@@ -11,7 +11,7 @@ def jogar():
     letras_acertadas = []
     for i in range(size):
         letras_acertadas.append('_')
-    
+    print(type(palavra_secreta))
     print(letras_acertadas)
 
     erros = 0
@@ -34,7 +34,7 @@ def jogar():
         if ("_" not in letras_acertadas):
             break
         print(letras_acertadas)
-
+        print(f'Faltam {size - erros} tentativas.')
 
     if("_" not in letras_acertadas):
         print("Você ganhou!!")

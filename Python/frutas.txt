@@ -1,1 +1,6 @@
-maçã banana laranja melancia 
+tangerina
+caqui
+pera
+banana
+laranja
+melancia 
