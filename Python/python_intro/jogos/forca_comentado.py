@@ -7,6 +7,7 @@ def mensagem_abertura():
     print("***********************", end="\n\n")
 
 def carrega_pal_sec():
+
     palavras = []
     with open('frutas.txt', 'r') as arquivo:
         for i in arquivo:
@@ -14,6 +15,9 @@ def carrega_pal_sec():
     palavra_secreta = (random.choice(palavras)).upper()
     #size = len(palavra_secreta)
     return palavra_secreta
+
+def carrega_letras_acertadas(palavra):
+    return ['_' for letra in palavra]
 
 def jg_forca():
 
@@ -23,7 +27,7 @@ def jg_forca():
     size = len(palavra_secreta)
     print(f'Dica: a palavra tem {size} letras. e é uma Fruta.', end='\n\n')
     # GERANDO ESPAÇOS VAZIOS
-    letras_acertadas = ['_' for letra in palavra_secreta]  
+    letras_acertadas = carrega_letras_acertadas(palavra_secreta)
     print(letras_acertadas) # OU 
     #letras_acertadas = []
     #for i in range(size):
@@ -57,7 +61,7 @@ def jg_forca():
         print('Voce perdeu')
 
     print('Fim do Jogo', end='\n\n')
-    askJogar = int(input('Deseja jogar novamente: (1)Forca (2)Menu de Jogos.'))
+    askJogar = int(input('(1)Replay (2)Menu de Jogos: '))
     if askJogar == 1:
         jg_forca()
     else: 

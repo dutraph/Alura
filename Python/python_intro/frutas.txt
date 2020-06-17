@@ -3,4 +3,7 @@ caqui
 pera
 banana
 laranja
-melancia 
+melancia
+abacaxi
+uva
+melao

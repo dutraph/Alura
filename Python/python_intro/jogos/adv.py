@@ -8,9 +8,8 @@ def jg_adv():
 
     sec_num = (randint(0, 5))
     tentativas = 0
-    pts = 1000
+    pts = 100
     nivel = int(input("Escolha a dificuldade do jogo.(1) Fácil  (2) Médio  (3) Difícil: "))
-    print(sec_num)
 
     if nivel == 1:
         tentativas = 20
@@ -44,11 +43,14 @@ def jg_adv():
             pts = pts - pts_perd
 
     print("Fim!")
-    askJogar = int(input('Deseja jogar novamente: (1)Adivinha (2)Menu de Jogos.'))
+    askJogar = int(input('Deseja jogar novamente: (1)Adivinha (2)Menu de Jogos (3)Sair.'))
     if askJogar == 1:
         jg_adv()
-    else: 
+    elif askJogar == 2:
         menu_jogos.escolhe_jogos()
+    else: 
+        print('Ate logo!')
+        
 if __name__ == "__main__":
     jg_adv()
 
