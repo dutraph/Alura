@@ -8,7 +8,7 @@ def jg_adv():
 
     sec_num = (randint(0, 5))
     tentativas = 0
-    pts = 1000
+    pts = 100
     nivel = int(input("Escolha a dificuldade do jogo.(1) Fácil  (2) Médio  (3) Difícil: "))
     print(sec_num)
 
@@ -20,7 +20,7 @@ def jg_adv():
         tentativas = 5
 
     for rodada in range(1, tentativas + 1):
-        print("Tentativa {} de {}".format(rodada, tentativas, end="\n\n"))
+        print(f"Tentativa {rodada} de {tentativas}", end="\n\n")
         chute = int(input("Digite um número entre 1 e 5: "))
         print("Seu chute foi: ", chute, end="\n\n")
 
@@ -33,7 +33,7 @@ def jg_adv():
         menor = chute < sec_num
 
         if certo:
-            print("Voce acertou! Sua pontuaçao foi {:.02f}".format(pts))
+            print(f"Voce acertou! Sua pontuaçao foi {pts:.02f}")
             break
         else:
             if maior:
