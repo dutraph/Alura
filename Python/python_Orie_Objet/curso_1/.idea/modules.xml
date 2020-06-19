@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/python_Orie_Objet.iml" filepath="$PROJECT_DIR$/.idea/python_Orie_Objet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../python_intro/.idea/python_intro.iml" filepath="$PROJECT_DIR$/../python_intro/.idea/python_intro.iml" />
     </modules>
   </component>
 </project>
