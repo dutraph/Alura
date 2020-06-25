@@ -1,0 +1,17 @@
+<meta charset="UTF-8">
+
+<script>
+    function pulaLinha(){
+        document.write('<br><hr><br>');
+    }
+
+    function mostra(frase){
+        document.write('<big>' + frase + '</big>');
+        pulaLinha();
+    }
+
+    var ano = 2020;
+    mostra('Eu nasci em: ' + (ano - 29));
+    mostra('Maria nasceu em: ' + (ano - 27));
+    mostra('Gabriel nasceu em: ' + (ano - 24));
+</script>

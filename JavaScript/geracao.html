@@ -1,0 +1,20 @@
+<meta charset="UTF-8">
+
+<script>
+	
+	function pulaLinha(){
+		document.write('<br><br>')
+	}
+
+	function mostra(frase){
+		document.write(frase);
+		pulaLinha();
+	}
+
+	let ano = 2020;
+	let mediaCasal = 28;
+	let resp = ((ano - 1500)/28);
+
+	mostra('De 1500 até '+ano+' é de aproximadamente ' + Math.round(resp)+' gerações.')
+
+</script>
