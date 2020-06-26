@@ -1,8 +1,8 @@
-var tanque = 40;
-var caminhoComGasolina = 480;
-var caminhoComAlcool = 600;
-var consumoGasolina = caminhoComGasolina/tanque;
-var consumoAlcool = caminhoComAlcool/tanque;
+let tanque = 40;
+let caminhoComGasolina = 480;
+let caminhoComAlcool = 600;
+let consumoGasolina = caminhoComGasolina/tanque;
+let consumoAlcool = caminhoComAlcool/tanque;
 
 function pulaLinha() {
     document.write("<br><br>");
