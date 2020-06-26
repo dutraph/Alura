@@ -58,3 +58,6 @@ let podeAplicar = maiorIdade && possuiCartTrab;
 if (podeAplicar === true ? 
     console.log('Prossiga!') : 
     console.log('Nao pode'));
+
+let nome = 'Paulo'
+console.log(nome);
