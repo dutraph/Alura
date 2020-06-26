@@ -1,54 +1,87 @@
-class Filmes:
-    # Função contrutora
+class Programa:
+    def __init__(self, nome, ano):
+        self._nome = nome.title()
+        self.ano = ano
+        self._likes = 0
+
+    @property
+    def likes(self):
+        return self._likes
+
+    @property
+    def nome(self):
+        return self._nome
+
+    @nome.setter
+    def nome(self, novo_nome):
+        self._nome = novo_nome.title()
+
+    def dar_like(self):
+        self._likes += 1
+
+    def __str__(self):
+        return f'{self._nome} - {self.ano}: {self._likes} Likes'
+
+class Filmes(Programa):
     def __init__(self, nome, ano, duraçao):
-        self.__nome = nome.title()
-        self.ano = ano
+        super().__init__(nome, ano)
         self.duraçao = duraçao
-        self.__likes = 0
-    
-    @property
-    def likes(self):
-        return self.__likes
-    
-    @property
-    def nome(self):
-        return self.__nome
 
-    @nome.setter
-    def nome(self, novo_nome):
-        self.__nome = novo_nome.title()
+    def __int__(self):
+        if self.dar_like() == 1:
+            like = 'Like'
+        else:
+            like = 'Likes'
+        return f'{self._nome} - {self.ano} - {self.duraçao} min, {self._likes} Likes'
 
-    def dar_like(self):
-        self.__likes += 1
-    
-
-
-class Series:
-    # Função contrutora
+class Series(Programa):
     def __init__(self, nome, ano, temporadas):
-        self.__nome = nome.title()
-        self.ano = ano
+        super().__init__(nome, ano)
         self.temporadas = temporadas
-        self.__likes = 0
 
-    @property
-    def likes(self):
-        return self.__likes
-    
-    @property
-    def nome(self):
-        return self.__nome
+    def __int__(self):
+        return f'{self._nome} - {self.ano} - {self.temporadas} temporadas, {self._likes} Likes'
 
-    @nome.setter
-    def nome(self, novo_nome):
-        self.__nome = novo_nome.title()
+class Playlist:
+    def __int__(self, nome, programas):
+        self.nome = nome
+        self.programas = programas
 
-    def dar_like(self):
-        self.__likes += 1
-       
+    def tamanho(self):
+        return len(self.programas)
+vingadores = Filmes('vingadores - guerra infinita', 2019, 160)
+atlanta = Series('atlanta', 2018, 2)
+tmep = Filmes('todo mundo em panio', 1999, 100)
+demolidor = Series('demolidor', 2016, 2)
+tmep.dar_like()
+tmep.dar_like()
+tmep.dar_like()
+tmep.dar_like()
+tmep.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
+vingadores.dar_like()
+vingadores.dar_like()
+vingadores.dar_like()
+vingadores.dar_like()
+vingadores.dar_like()
+vingadores.dar_like()
+atlanta.dar_like()
+atlanta.dar_like()
+atlanta.dar_like()
+atlanta.dar_like()
+atlanta.dar_like()
 
+filmes_e_series = [vingadores, atlanta, demolidor, tmep]
+playlist_fds = Playlist('fim de semana', filmes_e_series)
+
+for i in playlist_fds.programas:
+    print(i)
+
+'''
 ask = int(input('Deseja cadastrar (1)filme ou (2)serie: '))
-
 if ask == 1:
     filme,ano,duraçao = input('Filme: , Ano: , Duraçao: ').split(',')
     a = Filmes(filme, ano, duraçao)
@@ -59,10 +92,14 @@ if ask == 1:
     print(f'Duração: {a.duraçao}')
     print(f'Likes {a.likes}.')
 elif ask == 2:
-    nome,anoserie,temporada = input('Serie: , Ano: , temps: ').split(',')
-    a = Series(nome, anoserie, temporada)
+    nome,ano,temporada = input('Serie: , Ano: , temps: ').split(',')
+    a = Series(nome, ano, temporada)
     a.dar_like()
-    a.dar_like()
-    print(f'Nome: {a.nome} | Ano: {a.ano} | Temporadas: {a.temporadas} | Likes {a.likes}')
+    print(f'Nome: {a.nome}')
+    print(f'Ano: {a.ano}')
+    print(f'Temporadas: {a.temporadas}')
+    print(f'Likes {a.likes}')
 else:
     print('Tchau!')
+ 
+'''
