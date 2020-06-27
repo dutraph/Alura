@@ -1,0 +1,19 @@
+<meta charset="UTF-8">
+<script>
+    function pulaLinha() {
+        document.write('<br><br>');
+    }
+    function mostra(frase) {
+        document.write(frase);
+        pulaLinha();
+    }
+
+    var time = prompt('Qual o time?')
+    var vitorias = prompt('Numero de vitórias do ' + time + '?');
+    var empates = prompt('Numero de empates do ' + time + '?');
+    var derrotas = prompt('Numero de derrotas do ' + time + '?');
+    // calculo da pontuação é: vitoria = 3 pts | empates = 1 pt | derrotas = -2 pts
+    var pontos = (((vitorias * 3) + empates) - (derrotas * 2));
+    mostra(time + ': '+pontos + ' Pontos.');
+    pulaLinha();
+</script>
