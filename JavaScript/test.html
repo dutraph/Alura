@@ -11,11 +11,20 @@
         var imc = peso / (altura ** 2);
         return imc
     }
-    const nomeInform = prompt('Informe seu nome.');
-    let pesoInform = prompt(nomeInform + ' Informe o Peso.');
-    let alturaInform = prompt(nomeInform + ' Informe sua Altura.');
+    const nomeInform = prompt('Entre seu nome.');
+    let pesoInform = parseFloat(prompt('Informe seu peso.'));
+    let alturaInform = parseFloat(prompt('Informe sua altura.'));
     let imcPessoa = Math.round(calculaImc(pesoInform, alturaInform));
-    if (imcPessoa <= 30 ? 
-        mostra(nomeInform + ' o Seu IMC é: ' + imcPessoa + '. Peso ideal.'):
-        mostra(nomeInform + ' o Seu IMC é: ' + imcPessoa + '. Esta acima do peso'));
+    if (imcPessoa < 18.5) {
+        mostra(nomeInform + ' o Seu IMC é: ' + imcPessoa + '. abaxio do peso.');
+    }
+    if (imcPessoa > 31) {
+        mostra(nomeInform + ' o Seu IMC é: ' + imcPessoa + '. Esta acima do peso');
+    }
+    if (imcPessoa >= 18.5) {
+
+        if (imcPessoa <=31){
+            mostra(nomeInform + ' o Seu IMC é: ' + imcPessoa + '. Peso ideal.');
+        }
+    } 
 </script>

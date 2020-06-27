@@ -8,6 +8,7 @@
         pulaLinha();
     }
 
+    const anoCampeonato = parseInt(prompt('Entre o ano do atual campeonato.'));
     var time = prompt('Qual o time?');
     var vitorias = parseInt(prompt('Numero de vitórias do ' + time + '?'));
     var empates = parseInt(prompt('Numero de empates do ' + time + '?'));
@@ -15,5 +16,15 @@
     // calculo da pontuação é: vitoria = 3 pts | empates = 1 pt | derrotas = -2 pts
     var pontos = (((vitorias * 3) + empates) - (derrotas * 2));
     mostra(time + ': '+pontos + ' Pontos.');
+
+    if (pontos === 28) {
+        mostra(' teve o mesmo desempenho de 2019');
+    } 
+    if (pontos < 28) {
+        mostra(' foi pior que em ' + anoCampeonato - 1);
+    } 
+    if (pontos > 28) {
+        mostra('foi melhor que em 2019');
+    } 
     pulaLinha();
 </script>
