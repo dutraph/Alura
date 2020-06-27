@@ -21,10 +21,8 @@
     if (imcPessoa > 31) {
         mostra(nomeInform + ' o Seu IMC é: ' + imcPessoa + '. Esta acima do peso');
     }
-    if (imcPessoa >= 18.5) {
-
-        if (imcPessoa <=31){
-            mostra(nomeInform + ' o Seu IMC é: ' + imcPessoa + '. Peso ideal.');
-        }
+    // (&& and) (|| or) (! not) 
+    if (imcPessoa >= 18.5 && imcPessoa <=31 ) {
+        mostra(nomeInform + ' o Seu IMC é: ' + imcPessoa + '. Peso ideal.');
     } 
 </script>

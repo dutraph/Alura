@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<script>
+    function pulaLinha(){
+        document.write('<br><br>')
+    }
+
+    function mostra(frase){
+        document.write(frase);
+        pulaLinha();
+    }
+
+    var numeroPensado = (Math.random() * 10);
+    var num = Math.round(numeroPensado);
+    console.log(num);
+    var chute = parseInt(prompt('Advinhe um numero de 0 a 10'));
+    if(chute == num) {
+        mostra('Acertou o numero eh: '+ num);
+    } else{
+        mostra('Errou o numero era: '+ num);
+    }
+</script> 
