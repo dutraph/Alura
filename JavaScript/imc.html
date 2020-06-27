@@ -13,19 +13,13 @@
     }
 
     function calcImc(peso, altura){
-        var imc = Math.round(peso / (altura ** 2));
+        var imc = (peso / (altura ** 2));
         return imc;
     }
 
-    var imcPaulo = calcImc(102, 1.80);
-    var imcMaria = calcImc(78, 1.62)
-    mostra('O imc do Paulo é: '+imcPaulo);
-    mostra('O imc da Maria é: '+imcMaria);
-
-    function geraCodigo(letra, numero, numero2){
-        var codigo = (letra+numero+numero2);
-        return codigo;
-    }
-    cod = geraCodigo('GH',10,22);
-    mostra(cod);
+    const nomeInform = prompt('Entre seu nome.');
+    let pesoInform = parseFloat(prompt('Informe seu peso.'));
+    let alturaInform = parseFloat(prompt('Informe sua altura.'));
+    var imcInform = calcImc(pesoInform, alturaInform);
+    mostra('O imc do Paulo é: '+imcInform);
 </script>
