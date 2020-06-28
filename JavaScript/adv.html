@@ -11,13 +11,26 @@
         pulaLinha();
     }
 
-    var numeroPensado = (Math.random() * 10);
-    var num = Math.round(numeroPensado);
-    console.log(num);
-    var chute = parseInt(prompt('Advinhe um numero de 0 a 10'));
-    if(chute == num) {
-        mostra('Acertou o numero eh: '+ num);
-    } else{
-        mostra('Errou o numero era: '+ num);
+    function sorteiaNumero(n){
+        var numeroPensado = (Math.random() * n);
+            numeroPensado = Math.round(numeroPensado);
+        return numeroPensado
+        return n
     }
+    
+    var n = parseInt(prompt('Entre um numero de 0  a 100.'));
+    var num = sorteiaNumero(n);
+    console.log(num);
+    var chute = parseInt(prompt('Advinhe um numero de 0 a '+ n));
+    if(chute == num) {
+        mostra('Acertou o numero é: '+ num);
+    } else {
+        if (chute > num) {
+            mostra('Errou o chute é maior que o numero secreto!');         
+        } else{
+            mostra('Errou o chute é menor que o numero secreto!');
+        }
+        
+    }
+    
 </script> 
