@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<input/> <button>Digite seu nome</button>
+
+<script>
+
+    function mostraInput(){
+        alert(input.value);
+
+        input.value = "";
+        input.focus();        
+
+    }
+
+    var input = document.querySelector("input");
+    var button = document.querySelector("button"); 
+
+    button.onclick = mostraInput;
+</script>

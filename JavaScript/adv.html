@@ -12,40 +12,37 @@
     }
 
     function sorteiaNumero(n){
-        var numeroPensado = (Math.random() * n);
-            numeroPensado = Math.round(numeroPensado);
+        var numeroPensado = Math.round((Math.random() * n));
         return numeroPensado
         return n
     }
     
     function chance(tentativas){
-        var n = 0;
+        var n = 1;
         while (n <= tentativas){
-            n+= n;
+            n++;
         }
     }
 
     var n = parseInt(prompt('Entre um numero de 0  a 100.'));
     var num = sorteiaNumero(n);
     console.log(num);
-    var numeroTentativa = parseInt(prompt("Entre o numero de tentativa: 1, 3 ou 5."));
-    var nc = 0;
-    while (nc <= numeroTentativa){
-        var chute = parseInt(prompt('Advinhe um numero de 0 a '+ n));
-        nc = nc + 1;
-        console.log('Voce tem ' + numeroTentativa);
-        console.log('tentativa ' + nc);
+    var numeroChances = parseInt(prompt("Entre o numero de tentativa: 1, 3 ou 5."));
+    var nc = 1;
+    while (nc <= numeroChances){
+        var chute = parseInt(prompt('Advinhe um numero de 0 a '+ n + " voce tem " + numeroChances + " chances."));
+        nc++;
 
-    }
-    if(chute == num) {
-        mostra('Acertou o numero é: '+ num);
-    } else {
-        if (chute > num) {
-            mostra('Errou o chute é maior que o numero secreto!');         
-        } else{
-            mostra('Errou o chute é menor que o numero secreto!');
+        if(chute == num) {
+        alert('Acertou o numero é: '+ num);
+        break;
+        } else {
+            if (chute > num) {
+                alert('Errou o chute é maior que o numero secreto!');         
+            } else{
+            alert('Errou o chute é menor que o numero secreto!');
+            }
         }
-        
     }
     
 </script> 
