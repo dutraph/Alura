@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<script>
+    function pulaLinha(){
+        document.write('<br><br>')
+    }
+
+    function mostra(frase){
+        document.write(frase);
+        pulaLinha();
+    }
+
+    var cont = 1;
+    while (cont <= 100){
+        mostra(cont + " é impar")
+        cont = cont + 2;
+    }
+    mostra("FIM")
+
+
+</script>
