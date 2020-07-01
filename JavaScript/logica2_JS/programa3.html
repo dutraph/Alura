@@ -19,4 +19,36 @@
         console.log(x + ', '+ y);
     }
     tela.onclick = desenhaCirculo;
+
+    function sorteiaNumeros(quant){
+        var segredos = [];
+        var num = 0;
+        while (num < quant){
+            var numeroAleatorio = sorteia();
+            if (numeroAleatorio!== 0){
+
+                var achou = false;
+
+                for (var posicao = 0; posicao < segredos.length; posicao++){
+
+                    if (segredos[posicao] == numeroAleatorio){
+                       achou = true;
+                      break;
+                    }
+                }
+
+                if (achou == false){
+                    segredos.push(numeroAleatorio); //função push incrementa dados no array
+                    num++
+                }
+        }      
+    }
+        return segredos;
+    }
+
+
+
+
+
+
 </script>
