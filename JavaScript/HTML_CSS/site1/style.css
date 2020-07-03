@@ -1,5 +1,33 @@
 body{
     background: seashell;
+    padding: 20px;
+}
+
+.topoPagina{
+    background: #bbbbbb;
+}
+.caixa {
+    position: relative;
+    width: 1600px;
+    margin: 0 auto;
+
+}
+nav ul {
+    position: absolute;
+    top:115px;
+    right: 50px;
+}
+nav li {
+    display: inline;
+    margin: 0 0 0 15px;
+}
+nav a {
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+
 }
 
 #banner{
