@@ -1,0 +1,91 @@
+/* Header & menu */
+.topoPagina{
+    background: #bbbbbb;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .caixa {
+    position: relative;
+    width: 940px;
+    margin: 0 auto;
+  
+  }
+  
+  nav ul {
+    position: absolute;
+    top: 110px;
+    right: 0;
+  }
+  nav li {
+    display: inline;
+    margin: 0 0 0 15px;
+  }
+  nav a {
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+  
+  }
+  nav a:hover {
+    color: #c78c18; /* muda as cores dos links quando passar o mouse */
+    text-decoration: underline;
+  }
+
+            /* body */
+main {
+  width: 940px;
+  margin: 0 auto;
+}
+
+form {
+  margin: 40px 0;
+}
+
+form label, form p{
+  font-size: 17px;
+  display: block;
+  margin: 0 0 10px;
+}
+
+
+/* para replica as atribuiçoes sem precisar repetir o bloco usar a virgula */
+.input-padrao{ 
+  display: block;
+  margin: 0 0 20px;
+  padding: 10px 25px;
+  width: 50%;
+  border-radius: 10px;
+  
+}
+
+.checkbox{
+  margin: 20px 0;
+}
+
+.envio {
+  width: 10%;
+  border: 2px solid black; /* define a borda */
+  border-radius: 15px; /* arredonda a borda */
+  background-color: #c78c18;
+  
+}
+
+.envio:hover{
+  background-color: aqua;
+}
+            /* footer */
+  .rodape{
+    text-align: center ;
+    background: url(../IMG/bg.jpg);
+    padding: 40px 0;
+  }
+  
+  .copyright{
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 20px 0 0;
+  }

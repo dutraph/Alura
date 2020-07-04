@@ -81,3 +81,17 @@ em strong{
 .imgBeneficios{
     width: 50%;
 }
+
+            /* Parte do rodapé */
+  .rodape{
+    text-align: center ;
+    background: url(../IMG/bg.jpg);
+    padding: 40px 0;
+  }
+  
+  .copyright{
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 20px 0 0;
+  }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>Contato - Barbearia Alura</title>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/contato.css">
+  </head>
+  <body>
+    <header class="topoPagina">
+      <div class="caixa" >
+        <h1><a href="../HTML/index.html"><img src="../IMG/logo.png"></a></h1>
+        <nav>
+          <ul>
+            <li><a href="../HTML/index.html">Home</a></li>
+            <li><a href="../HTML/produtos.html">Produtos</a></li>
+            <li><a href="../HTML/contato.html">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <form>
+        <!-- Inicio do formulário -->
+        <label for="nomeSobrenome" >Nome Completo</label>
+        <input class="input-padrao" type="text" id="nomeSobrenome" placeholder="João da Silva">
+
+        <label for="email" >E-Mail</label>
+        <input class="input-padrao" type="text" id="email" placeholder="joao@gmail.com">
+        
+        <label for="telefone">Telefone</label>
+        <input class="input-padrao" type="text" id="telefone" placeholder="(xx)xxxxx-xxxx">
+
+        <label for="mensagem">Feedback</label>
+        <textarea class="input-padrao" cols="62" rows="6" id="mensagem" placeholder=" Deixe um feedback para melhorarmos nosso atendimento."></textarea>
+
+
+        <!-- Preferencia de contato (a opçao name dentro da tag input serve para 
+             atribuir todas as opçoes ao mesmo grupo)-->
+        <div>
+          <p>Como Prefere nosso contato?</p><br>
+          <label for="radio-email"><input type="radio" 
+            name="contato" value="email" id="radio-email">E-Mail</label>
+          
+
+          <label for="radio-tel"><input type="radio" 
+            name="contato" value="telefone" id="radio-tel">Telefone</label>
+          
+          
+          <label for="radio-whatsapp"><input type="radio" 
+            name="contato" value="whatsapp" id="radio-whatsapp">WhatsApp</label>
+          
+        </div>
+        
+        <label><input class="checkbox" type="checkbox">Marque para assinar nossa newsletter</label>
+        
+        <!-- Botao de envio -->
+        <input class="envio" type="submit" value="Enviar">
+      </form>
+    </main>
+
+    <!-- Inicio rodapé -->
+    <footer class="rodape" >
+      <img src="../IMG/logo-branco.png">
+      <p class="copyright">&copy; Copyright Barbearia Alura - 2020</p> <!-- &copy; é usado como simbolo do copyright (ver tabela unicode)-->
+    </footer>
+  </body>
+</html>
