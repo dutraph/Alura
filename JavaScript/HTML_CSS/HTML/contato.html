@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Contato - Barbearia Alura</title>
     <link rel="stylesheet" href="../CSS/reset.css">
-    <link rel="stylesheet" href="../CSS/contato.css">
+    <link rel="stylesheet" href="../CSS/style.css">
   </head>
   <body>
     <header class="topoPagina">
       <div class="caixa" >
-        <h1><a href="../HTML/index.html"><img src="../IMG/logo.png"></a></h1>
+        <h1><a href="../HTML/index.html"><img src="../IMG/logo.png" alt="Logo da Barbearia Alura" ></a></h1>
         <nav>
           <ul>
             <li><a href="../HTML/index.html">Home</a></li>
@@ -38,8 +38,8 @@
 
         <!-- Preferencia de contato (a opçao name dentro da tag input serve para 
              atribuir todas as opçoes ao mesmo grupo)-->
-        <div>
-          <p class="teste" id="teste" >Como Prefere nosso contato?</p><br>
+        <fieldset>
+          <legend class="teste" id="teste" >Como Prefere nosso contato?</legend><br>
           <label for="radio-email"><input type="radio" 
             name="contato" value="email" id="radio-email"> E-Mail</label>
           
@@ -51,25 +51,49 @@
           <label for="radio-whatsapp"><input type="radio" 
             name="contato" value="whatsapp" id="radio-whatsapp" checked> WhatsApp</label>
           
-        </div>
-        <div>
-          <p>Qual horário de preferência?</p>
+        </fieldset>
+        <fieldset>
+          <legend>Qual horário de preferência?</legend>
           <select>
             <option>Manhã</option>
             <option>Tarde</option>
             <option>Noite</option>
           </select>
-        </div>
+        </fieldset>
         <label><input class="checkbox" type="checkbox" checked> Marque para assinar nossa newsletter</label>
         
         <!-- Botao de envio -->
         <input class="envio" type="submit" value="Enviar">
       </form>
+
+      <!--Tabela de horarios-->
+      <table>
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Seg: </td>
+            <td>8h ~ 20h</td>
+          </tr>
+          <tr>
+            <td>Qua: </td>
+            <td>8h ~ 20h</td>
+          </tr>
+          <tr>
+            <td>Sex: </td>
+            <td>8h ~ 12h</td>
+          </tr>
+        </tbody>
+      </table>
     </main>
 
     <!-- Inicio rodapé -->
     <footer class="rodape" >
-      <img src="../IMG/logo-branco.png">
+      <img src="../IMG/logo-branco.png" alt="Logo da Barbearia Alura">
       <p class="copyright">&copy; Copyright Barbearia Alura - 2020</p> <!-- &copy; é usado como simbolo do copyright (ver tabela unicode)-->
     </footer>
   </body>
