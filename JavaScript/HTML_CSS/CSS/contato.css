@@ -66,7 +66,7 @@ form label, form p{
 }
 
 .envio {
-  width: 10%;
+  width: 20%;
   border: 2px solid black; /* define a borda */
   border-radius: 15px; /* arredonda a borda */
   background-color: #c78c18;

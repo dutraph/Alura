@@ -24,13 +24,13 @@
       <form>
         <!-- Inicio do formulário -->
         <label for="nomeSobrenome" >Nome Completo</label>
-        <input class="input-padrao" type="text" id="nomeSobrenome" placeholder="João da Silva">
+        <input class="input-padrao" type="text" id="nomeSobrenome" placeholder="ex. João da Silva" required>
 
         <label for="email" >E-Mail</label>
-        <input class="input-padrao" type="text" id="email" placeholder="joao@gmail.com">
+        <input class="input-padrao" type="email" id="email" placeholder="ex. joao@gmail.com" required>
         
         <label for="telefone">Telefone</label>
-        <input class="input-padrao" type="text" id="telefone" placeholder="(xx)xxxxx-xxxx">
+        <input class="input-padrao" type="tel" id="telefone" placeholder="(xx)xxxxx-xxxx" required>
 
         <label for="mensagem">Feedback</label>
         <textarea class="input-padrao" cols="62" rows="6" id="mensagem" placeholder=" Deixe um feedback para melhorarmos nosso atendimento."></textarea>
@@ -39,21 +39,28 @@
         <!-- Preferencia de contato (a opçao name dentro da tag input serve para 
              atribuir todas as opçoes ao mesmo grupo)-->
         <div>
-          <p>Como Prefere nosso contato?</p><br>
+          <p class="teste" id="teste" >Como Prefere nosso contato?</p><br>
           <label for="radio-email"><input type="radio" 
-            name="contato" value="email" id="radio-email">E-Mail</label>
+            name="contato" value="email" id="radio-email"> E-Mail</label>
           
 
           <label for="radio-tel"><input type="radio" 
-            name="contato" value="telefone" id="radio-tel">Telefone</label>
+            name="contato" value="telefone" id="radio-tel"> Telefone</label>
           
           
           <label for="radio-whatsapp"><input type="radio" 
-            name="contato" value="whatsapp" id="radio-whatsapp">WhatsApp</label>
+            name="contato" value="whatsapp" id="radio-whatsapp" checked> WhatsApp</label>
           
         </div>
-        
-        <label><input class="checkbox" type="checkbox">Marque para assinar nossa newsletter</label>
+        <div>
+          <p>Qual horário de preferência?</p>
+          <select>
+            <option>Manhã</option>
+            <option>Tarde</option>
+            <option>Noite</option>
+          </select>
+        </div>
+        <label><input class="checkbox" type="checkbox" checked> Marque para assinar nossa newsletter</label>
         
         <!-- Botao de envio -->
         <input class="envio" type="submit" value="Enviar">
