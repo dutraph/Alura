@@ -65,12 +65,12 @@ body{
   }
   
   .produtos li:hover h2{ /*usa o hover pra mudar a ação do elemento quando o mouse estiver em cima*/
-    font-size: 34px;
+    font-size: 29px;
   
   }
   
   .produtos h2 {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
   
   }
@@ -162,15 +162,15 @@ body{
   
   /*  CSS Pagina inicial */
 
-  .banner {
-      width: 100%;
-  }
+.banner {
+  width: 100%;
+}
 
-  .titulo-principal{
-    text-align: center;
-    font-size: 2em;
-    margin: 0 0 1em;
-    clear: left;
+.titulo-principal{
+  text-align: center;
+  font-size: 2em;
+  margin: 0 0 1em;
+  clear: left;
 }
 
 .principal{
@@ -190,9 +190,21 @@ body{
     float: left;
     margin: 0 20px 20px 0; /* 0 cima, 20 direita, 20 baixo 0 esquerda */
 }
+.conteudo-beneficios{
+  width: 640px;
+  margin: 0 auto;
+}
 
-.imagenBeneficios{
-    width: 60%;
+.lista-beneficios{
+  width: 40%;
+}
+
+.itens{
+  display: block;
+}
+
+.imagem-beneficios{
+  width: 60%;
 }
 
 .mapa{
