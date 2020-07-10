@@ -270,7 +270,7 @@ body{
 }*/
 
 .video{
-  width: 560px;
+  width: 100%;
   margin: 2em auto;
   box-shadow: 10px 10px 30px black;
 }
@@ -295,8 +295,23 @@ main p:not(#missao) {     Seletor not, para acessar os elementos, exceto algum.
 }
 
 
-*/
+/* adaptação para mobile */
+
 
 @media screen and (max-width: 480px){
-  background: #888888;
+  .caixa, .principal, .conteudo-beneficios, .mapa-conteudo, .video{
+    width: auto;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  nav ul{
+    position: static;
+
+  }
+  .lista-beneficios, .imagem-beneficios{
+    width: 100%;
+  }
 }
