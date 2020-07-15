@@ -169,3 +169,6 @@ Regular expressions
 
 	Para achar todos que sao ganhadores de awards, seguindo o padrao da palavra Won no inicio da key awards.text 
 > db.movieDetails.find({"awards.text": {$regex: /^Won .*/}}, {_id: 0, title: 1, "awards.text":1}).pretty()
+
+
+db.movies.find({$and: [{"cast": "Jack Nicholson", "John Huston"}, {"viewerRating": {$gt: 7}}, {"mpaaRating": {$eq: "R"}}]}, {_id: 0, title: 1}).pretty()
