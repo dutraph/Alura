@@ -135,9 +135,9 @@ db.movies.findOne({mpaaRating: {$exists: false}}) - [procura por docs que nao co
 logical operators
 > db.movieDetails.find({$or: [{"tomato.meter": {$gt: 95}},{"metacritic": {$gt: 88}}]}, {_id: 0, title: 1, "tomato.meter": 1, "metacritic":1}).count() - [usando $or procura os que atendem 1 ou outro]
 
-> db.movieDetails.find({$and: [{"tomato.meter": {$gt: 95}},{"metacritic": {$gt: 88}}]}, {_id: 0, title: 1, "tomato.meter": 1, "metacritic":1}).count() - [usando $or procura os que atendem os 2]
+> db.movieDetails.find({$and: [{"tomato.meter": {$gt: 95}},{"metacritic": {$gt: 88}}]}, {_id: 0, title: 1, "tomato.meter": 1, "metacritic":1}).count() - [usando $and procura os que atendem os 2]
 OU
-> db.movieDetails.find({"tomato.meter": {$gt: 95}},{"metacritic": {$gt: 88}}, {_id: 0, title: 1, "tomato.meter": 1, "metacritic":1}).count() - [usando $or procura os que atendem os 2]
+> db.movieDetails.find({"tomato.meter": {$gt: 95}},{"metacritic": {$gt: 88}}, {_id: 0, title: 1, "tomato.meter": 1, "metacritic":1}).count() - [nao usando nenhum operador porem com duas keys diferentes funciona como se fosse $and, procura os que atendem os 2]
 
 
 OBS: AS KEYS NO JSON TEM Q SER UNICAS, OS DOIS COMANDOS ACIMA FAZEM A MESMA COISA POIS ESTAO BUSCANDO EM DUAS CHAVES DIFERENTES, DEVEMOS USAR O OPERADOR $and PRINCIPALMENTE SE QUISERMOS PESQUISAR NA MESMA CHAVE DOIS VALORES DIFERENTES, CASO CONTRARIO O MONGO SO VAI BUSCAR NA SEGUNDA CHAVE, COMO NO CASO ABAIXO
@@ -150,3 +150,22 @@ OBS: AS KEYS NO JSON TEM Q SER UNICAS, OS DOIS COMANDOS ACIMA FAZEM A MESMA COIS
 
 
 > db.shipwrecks.find({$or: [{"watlev": {$eq: "always dry"}},{"depth": {$eq: 0}}]}, {_id: 0, watlev: 1, depth: 1}).count()
+
+ARRAY OPERATORS
+
+> db.movieDetails.find({genres: {$all: ["Comedy", "Crime", "Drama"]}}, {_id: 0, title: 1, genres: 1}).pretty() - [Com o $all procuramos por correspondencias com os valores dentro do array.]
+
+> db.movieDetails.find({countries: {$size: 1}}, {_id:0, title: 1, countries: 1}).count() - [se tivermos por exemplo de 1 a 3 itens dentro do array, se usar o $size 1 iremos procurar apenas os que tem 1 item.]
+
+
+
+> db.surveys.find({results: {$elemMatch: {"product": "abc", "score":{$eq: 7}}}}).count()
+
+
+Regular expressions 
+
+	Para verificar
+> db.movieDetails.find({}, {_id: 0, title: 1, awards.text:1}).pretty()
+
+	Para achar todos que sao ganhadores de awards, seguindo o padrao da palavra Won no inicio da key awards.text 
+> db.movieDetails.find({"awards.text": {$regex: /^Won .*/}}, {_id: 0, title: 1, "awards.text":1}).pretty()
