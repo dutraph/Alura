@@ -1,0 +1,152 @@
+Connecting to MongoDB
+
+mongo "mongodb://cluster0-shard-00-00-jxeqq.mongodb.net:27017,cluster0-shard-00-01-jxeqq.mongodb.net:27017,cluster0-shard-00-02-jxeqq.mongodb.net:27017/100YWeatherSmall?replicaSet=Cluster0-shard-0" --authenticationDatabase admin --ssl --username m001-student --password m001-mongodb-basics
+
+> show dbs
+> show collections
+
+> use video - [muda do banco 100YWeatherSmall para o banco video]
+> show collections - [mostra as collections dentro de video]
+> db.movies.find().pretty() - [procura com o find dentro da collection movies, e visualiza com o pretty (deixando organizado)] 
+> it - [para vizualizar mais]
+> db.movieDetails.find().count() - [conta a quantos documentos tem dentro da collection movieDetails no db video]
+
+Queries de filtro no compass
+{title:"Titanic"} - [query de busca por igualdade ex:. title = Titanic]
+{age: {"$gte": 21, "$lt": 70}} - [query de busca por range (gte: greater/equal) 
+											(lt: less than) ex:. age >= 21 e < 70]
+{age: {"$gte": 21, "$lte": 70}} - [query de busca por range (gte: greater/equal) 
+											(lte: less than/equal) ex:. age >= 21 e < 70]
+
+query nested(aninhada) - (no compass não é necessário o uso de " ")
+{wind.direction.angle: 999}
+
+
+
+Queries de filtro no mongoshell
+> use video
+> db.movies.find({"director": "Patty Jenkins"}).pretty()
+
+query nested(aninhada) mongoshell (é obrigado a usar " ")
+> use 100YWeatherSmall
+> db.data.find({"wind.direction.angle": 999}).pretty() - [busca no documento, dentro do object wind o sub object direction o valor para angle]
+
+
+query com array
+> db.movies.find({"cast.0": "Adam Sandler", "cast": "Chris Rock"}).pretty() - [busca no array cast na posição 0(ou seja ator principal Adam Sandler e em qualquer posição por Chris Rock)]
+
+
+query para uma linha
+> db.movies.find({genre: "Action, Adventure"}, {title: 1, director: 1 ,year: 1, _id: 0}).pretty() - [busca por todos os documentos com o genero action e adventure em qualquer posição e so retorna o titulo, diretor e ano e omite o campo _id que para não ser visualizado precisa ser omitido. 1 para mostrar e 0 para omitir.]
+
+
+username: m001-student
+password: m001-mongodb-basics
+
+### CRUD (CREATE / READ / UPDATE / DELETE) ###
+
+--CREATE--
+
+> db.moviesScratch.insertOne({title: "Star Trek II: The Wrath Of Khan", year: 1982, imdb: "tt0084726"}) - [insere 1(UM) documento manualmente via shell usando o insertOne]
+
+
+> db.moviesScratch.insertMany(
+	  [
+	       {
+	    "_id" : "tt0084726",
+	    "title" : "Star Trek II: The Wrath of Khan",
+	    "year" : 1982,
+	    "type" : "movie"
+	      },
+	      {
+	    "_id" : "tt0117731",
+	    "title" : "Star Trek: First Contact",
+	    "year" : 1996,
+	    "type" : "movie"
+	    }
+	  ]
+); - [insere varios documentos manualmente via shell usando o insertMany]
+
+OBS: SE O MONGO ACHAR 1 ERRO NA INSERÇÃO DE DADOS, ELE SÓ SERÁ INSERIDO ATÉ O ERRO, OS SEGUINTES MESMO QUE CORRETOS NÃO SERÃO ADCIONADOS.
+
+USANDO esse document option abaixo, logo após o array do insertMany o mongodb continua tentando adicionar mesmo se houver erros.
+{
+	"ordered": false
+}
+
+db.moviesScratch.insertMany(
+    [
+        {
+	    "_id" : "tt0084726",
+	    "title" : "Star Trek II: The Wrath of Khan",
+	    "year" : 1982,
+	    "type" : "movie"
+        },
+        {
+	    "_id" : "tt0117731",
+	    "title" : "Star Trek: First Contact",
+	    "year" : 1996,
+	    "type" : "movie"
+        }
+    ],
+    {
+        "ordered": false 
+    }
+);
+
+--READ--
+
+query com array
+> db.movies.find({"cast.0": "Adam Sandler", "cast": "Chris Rock"}).pretty() - [busca no array cast na posição 0(ou seja ator principal Adam Sandler e em qualquer posição por Chris Rock)]
+
+
+query para uma linha
+> db.movies.find({genre: "Action, Adventure"}, {title: 1, director: 1 ,year: 1, _id: 0}).pretty() - [busca por todos os documentos com o genero action e adventure em qualquer posição e so retorna o titulo, diretor e ano e omite o campo _id que para não ser visualizado precisa ser omitido. 1 para mostrar e 0 para omitir.]
+
+--UPDATE--
+
+> db.movieDetails.updateOne({title: "The Martian"}, {$set:{poster: "https://www.imdb.com/title/tt3659388/mediaviewer/rm1391324160"}}) - [usando o operador $set, podemos adicionar um novo campo que nao existia]
+
+> db.movieDetails.updateOne({title: "The Martian"}, {$set:{"awards": {"wins":8, "nominations": 14, "text": "Nominated for 3 Golden Globes. Another 8 wins & 14 nominations."}}}) - [inclusive multiplos valores para 1(UM) documento]
+
+> db.movieDetails.updateOne({title: "The Martian"}, {$inc: {"tomato.reviews": 3, "tomato.userReviews": 25}}) - [usando o operador $inc podemos incrementar valores (geralmente numericos) aos campos ja existentes.]
+
+> db.movieDetails.updateMany({rated: null}, {$unset: {rated: ""}}) - [usando o updatadeMany e $unset podemos por exemplo remover do documento o campo rated onde nao tem nenhuma informação]
+
+> db.movieDetails.updateOne({"imdb.id": detail.imdb.id}, {$set: detail}, {upsert: true}); - [usando o 3º parametro upsert:true durante um updateOne ele valida se ja existe e se nao existir ele cria.]
+
+--DELETE--
+
+> db.reviews.deleteOne({_id: ObjectId("5f0b7441c54c18f687ca2c20")}); - [deleta o documento que contem o _id:(que sempre é unico) com o deleteOne]
+
+> db.reviews.deleteMany({reviewer_id: 759723314}); - [deleta todos os documents criados pelo reviewer_id: 759723314 com o deleteMany]
+
+
+db.movieDetails.find({runtime:{$gte: 180}, "tomato.meter": {$gte: 95}}, {title: 1, runtime: 1, _id: 0})
+
+> db.movieDetails.find({rated:{$in: ["G", "PG", "PG-13"]}}, {title: 1, rated: 1, _id: 0}).count()
+
+> db.movieDetails.find({rated:{$nin: ["G", "PG", "PG-13", "UNRATED"]}}, {title: 1, rated: 1, _id: 0})
+
+db.movies.find({mpaaRating: {$exists: true}}) - [procura por docs que contem o field mpaaRating]
+
+db.movies.findOne({mpaaRating: {$exists: false}}) - [procura por docs que nao contem o field mpaaRating]
+
+logical operators
+> db.movieDetails.find({$or: [{"tomato.meter": {$gt: 95}},{"metacritic": {$gt: 88}}]}, {_id: 0, title: 1, "tomato.meter": 1, "metacritic":1}).count() - [usando $or procura os que atendem 1 ou outro]
+
+> db.movieDetails.find({$and: [{"tomato.meter": {$gt: 95}},{"metacritic": {$gt: 88}}]}, {_id: 0, title: 1, "tomato.meter": 1, "metacritic":1}).count() - [usando $or procura os que atendem os 2]
+OU
+> db.movieDetails.find({"tomato.meter": {$gt: 95}},{"metacritic": {$gt: 88}}, {_id: 0, title: 1, "tomato.meter": 1, "metacritic":1}).count() - [usando $or procura os que atendem os 2]
+
+
+OBS: AS KEYS NO JSON TEM Q SER UNICAS, OS DOIS COMANDOS ACIMA FAZEM A MESMA COISA POIS ESTAO BUSCANDO EM DUAS CHAVES DIFERENTES, DEVEMOS USAR O OPERADOR $and PRINCIPALMENTE SE QUISERMOS PESQUISAR NA MESMA CHAVE DOIS VALORES DIFERENTES, CASO CONTRARIO O MONGO SO VAI BUSCAR NA SEGUNDA CHAVE, COMO NO CASO ABAIXO
+
+##CERTO##
+> db.movieDetails.find({$and: [{"metacritic": {$ne: null}},{"metacritic": {$exists: true}}]}, {_id: 0, title: 1, "metacritic":1})
+
+##ERRADO##
+> db.movieDetails.find({"metacritic": {$ne: null}},{"metacritic": {$exists: true}}, {_id: 0, title: 1, "metacritic":1})
+
+
+> db.shipwrecks.find({$or: [{"watlev": {$eq: "always dry"}},{"depth": {$eq: 0}}]}, {_id: 0, watlev: 1, depth: 1}).count()
