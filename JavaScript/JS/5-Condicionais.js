@@ -5,8 +5,8 @@ let listaDeDestinos = new Array(
     ` Minas Gerais`,
 );
 
-function removeDestino(){
-    listaDeDestinos.splice(0, 1); // removendo do array, onde 3 é o start e 1 é o num de posiçoes apartir do start a serem deletados.
+function removeDestino(n){
+    listaDeDestinos.splice(n, 1); // removendo do array, onde 3 é o start e 1 é o num de posiçoes apartir do start a serem deletados.
 }
 function mostra(valor){
     console.log(valor);
@@ -14,14 +14,15 @@ function mostra(valor){
 const idadeComprador = 18;
 const estaAcompanhada = false;
 const temPassagem = true;
-console.log(`Os destinos possiveis sao ${listaDeDestinos.length}.`);
-mostra(listaDeDestinos);
+console.log(`Os destinos possiveis sao ${listaDeDestinos.length}.\n`);
+
 
 if (idadeComprador >= 18 || estaAcompanhada) {
-    console.log('Maior de Idade \n');
+    console.log('Liberado.');
+    mostra(listaDeDestinos);
     mostra(`Destino ${listaDeDestinos[0]} comprado.\n`);
-    removeDestino();
-    mostra(`Destinos disponiveis apos a compra.\n\n`)
+    removeDestino(0);
+    mostra(`Destinos disponiveis apos a compra.\n`)
     mostra(listaDeDestinos);
 } else {
     console.log(`Nao pode comprar!`);
@@ -29,8 +30,8 @@ if (idadeComprador >= 18 || estaAcompanhada) {
 
 }
 
-mostra(`Embarque: \n\n`)
-if(idadeComprador >=18 && temPassagem){
+mostra(`Embarque: \n`)
+if((idadeComprador >=18 && temPassagem) || estaAcompanhada) {
     mostra(`Boa viagem!`)
 }else{
     mostra(`Nao pode embarcar!`)
