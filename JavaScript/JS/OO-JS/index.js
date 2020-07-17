@@ -1,38 +1,27 @@
-class Cliente{
-  nome;
-  cpf;
-  rg;
-}
+import {Cliente} from "./Cliente.js"
+import {ContaCorrente} from "./ContaCorrente.js"
 
-class ContaCorrente{
-  agencia;
-  saldo;
-  deposito;
-  saque;
-  extrato;
-  transferencia;
-}
-
+const conta1 = new ContaCorrente();
 const cliente1 = new Cliente();
-
 cliente1.nome = "Ricardo";
-cliente1.rg = 12345567;
 cliente1.cpf = 11122233309;
-// cliente1.agencia = 1001;
-// cliente1.saldo = 0;
-
+cliente1.rg = 12345567;
+conta1.agencia = 1001;
+//conta1.depositar(2000);
+conta1.cliente = cliente1;
+//console.log(conta1);
 
 const cliente2 = new Cliente();
 cliente2.nome = "Alice";
 cliente2.cpf = 88822233309;
 cliente2.rg = 123455432;
-// cliente2.agencia = 1001;
-// cliente2.saldo = 0;
 
-const contaCorrenteRicardo = new ContaCorrente();
-contaCorrenteRicardo.saldo = 0;
-contaCorrenteRicardo.agencia = 1001;
-contaCorrenteRicardo.deposito 
+const conta2 = new ContaCorrente();
+conta2.cliente =cliente2;
+conta2.agencia = 1001;
 
-console.log(cliente1);
-console.log(cliente2);
+
+//conta2.depositar(1999.00);
+//console.log(`Nome:`,conta2.cliente.nome,`/ cpf:`,conta2.cliente.cpf);
+console.log(conta2.saldo);
+//conta1.transferir(50, conta2);
