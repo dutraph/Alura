@@ -1,6 +1,7 @@
 import { Cliente } from "./Cliente.js";
 
 export class ContaCorrente{
+  static numeroDeConta = 0;
     agencia;
     _cliente;
     //#saldo =0; convençao de campo privado "official" - https://github.com/tc39/proposal-class-fields#private-fields
@@ -11,12 +12,19 @@ export class ContaCorrente{
         this._cliente = novoValor;
     }
     }
+
     get cliente(){
       return this._cliente;
     }
 
     get saldo(){
       return this._saldo;
+    }
+
+    constructor(cliente, agencia){
+      this.cliente = cliente;
+      this.agencia = agencia;
+      ContaCorrente.numeroDeConta += 1;
     }
 
     transferir(valor, conta){
