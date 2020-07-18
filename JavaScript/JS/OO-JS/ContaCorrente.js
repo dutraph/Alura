@@ -2,16 +2,13 @@ import { Cliente } from "./Cliente.js";
 
 export class ContaCorrente{
   static numeroDeConta = 0;
-    agencia;
-    _cliente;
-    //#saldo =0; convençao de campo privado "official" - https://github.com/tc39/proposal-class-fields#private-fields
-    _saldo = 0; // convençao de campo privado "community"
-
+  //#saldo =0; convençao de campo privado "official"
+  // - https://github.com/tc39/proposal-class-fields#private-fields  
     set cliente(novoValor){
       if (novoValor instanceof Cliente){
         this._cliente = novoValor;
     }
-    }
+  }
 
     get cliente(){
       return this._cliente;
@@ -24,6 +21,8 @@ export class ContaCorrente{
     constructor(cliente, agencia){
       this.cliente = cliente;
       this.agencia = agencia;
+      this._saldo = 0; // convençao de campo privado "community"
+
       ContaCorrente.numeroDeConta += 1;
     }
 
@@ -40,8 +39,8 @@ export class ContaCorrente{
     }
     depositar(valor){ //early return, testa oque nao queremos primeiro. Obs:. o return nesse caso tem a funçao de break
       if (valor <= 0){
-        console.log(`Tentativa de deposito invalido no valor deve ser positivo.`)
         console.log(`Operaçao nao permitida.\n`)
+        console.log(`Tentativa de deposito invalido. Valor negativo.`)
         return;
       }
       console.log(`Deposito no valor de R$${valor}.`)
