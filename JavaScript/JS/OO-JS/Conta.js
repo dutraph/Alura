@@ -23,11 +23,15 @@ export class Conta{
 
   sacar(valor){
     let taxa = 1
+    return this._sacar(valor,taxa);
+   }
+   _sacar(valor, taxa){
     const valorSacado = taxa * valor;
     if (this._saldo >= valorSacado){
       this._saldo -=valorSacado;
       return valorSacado;
    }
+   return 0;
   }
   depositar(valor){ //early return, testa oque nao queremos primeiro. Obs:. o return nesse caso tem a funçao de break
     this._saldo +=valor;
@@ -38,6 +42,10 @@ export class Conta{
     conta.depositar(valorSacado);
   }
   extrato(){
-    console.log(`O extrato da poupança é: R$${this._saldo}.`)
+    console.log(`O extrato da conta corrente é: R$${this._saldo}.`)
   }
+  teste(){
+    console.log('Teste na classe conta!')
+  }
+
 }
