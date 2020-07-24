@@ -1,4 +1,4 @@
-public class Gerente extends Funcionario{
+public class Gerente2 extends Funcionario{
 	
 
 	private int senha; // Declaramos o atributo senha aqui na Classe gerente 
@@ -30,7 +30,7 @@ public class Gerente extends Funcionario{
 	 // para nao repetirmos codigo e pq eles sao privados.
 	 // Se fossem protected poderiamos usar os atributos com o super diretamente.
 	public double getBonificacao() {
-		System.out.println("Metodo do gerente OK!");
+		System.out.println("Metodo do gerente2 OK!");
 		return super.getBonificacao() + super.getSalario();
 	}													
 
