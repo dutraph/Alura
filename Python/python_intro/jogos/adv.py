@@ -15,8 +15,10 @@ def jg_adv():
         tentativas = 20
     elif nivel == 2:
         tentativas = 10
-    else:
+    elif nivel == 3:
         tentativas = 5
+    else:
+        print("Operação invalida")
 
     for rodada in range(1, tentativas + 1):
         print(f"Tentativa {rodada} de {tentativas}", end="\n\n")
