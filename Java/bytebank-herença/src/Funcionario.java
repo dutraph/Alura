@@ -14,6 +14,7 @@ public class Funcionario{
 	}
 	
 	public double getBonificacao() {
+		System.out.println("Metodo Funcionario padrao OK!");
 		return getSalario() * 0.05;
 	}
 	
