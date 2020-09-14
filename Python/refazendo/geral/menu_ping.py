@@ -10,3 +10,6 @@ for i in subnet.hosts():
         alive.append(i)
 for ip in alive:
     print(ip + " is alive") 
+
+
+    
