@@ -76,11 +76,26 @@ SELECT * FROM aluno;
 
 SELECT id, nome, idade, altura, matriculado_em FROM aluno;
 
+## Atualizando dados 
+UPDATE aluno
+SET	nome = 'Maria',
+	cpf = '1488217739',
+	observacao = 'Maria tem 27 anos e é aluna do mestrado de Controlo de qualidade na UPorto.',
+	idade = 27,
+	dinheiro = 4000.00,
+	altura = 1.60,
+	ativo = TRUE,
+	data_nascimento = '1992-12-23',
+	hora_aula = '07:00:00',
+	matriculado_em = '2020-08-30 12:37:34'
+WHERE id = 1;
 
 
+## Deletando dados https://www.postgresql.org/docs/12/sql-delete.html
 
+DELETE FROM aluno WHERE nome = 'Maria';
 
-
+DELETE FROM produtos WHERE estoque = 0;
 
 
 
