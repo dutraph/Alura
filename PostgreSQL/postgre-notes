@@ -7,8 +7,12 @@ CREATE DATABASE teste
     OWNER = postgres
     ENCODING = 'UTF8'
     CONNECTION LIMIT = -1;  ## o -1 significa que nao há limite de conexão.
+
 \list ou \l - Lista os bancos de dados existentes.
-\connect dbname ou \c dbname - Conextar a um DB diferente.
+\connect <nome-db> ou \c <nome-db> - Conecta a um DB diferente.
+\c <nome-db> <nome_usuário> - Conecta com outro usuário ao banco
+\d - listar tabelas do DB
+SELECT current_database(); - checar o DB que esta sendo usado
 DROP DATABASE alura; - Deleta um banco.
 
 ** Data Types numericos (https://www.postgresql.org/docs/12/datatype-numeric.html)**
@@ -97,7 +101,86 @@ DELETE FROM aluno WHERE nome = 'Maria';
 
 DELETE FROM produtos WHERE estoque = 0;
 
+ ## Usando o AS podemos passar ALIAS para os atributos
+SELECT nome AS "Nome do Aluno",
+	idade AS "Idade do Aluno", 
+	matriculado_em AS "Data e Hora da Matricula"
+FROM aluno;
+
+INSERT INTO aluno (nome) VALUES ('Jack');
+INSERT INTO aluno (nome) VALUES ('Peter');
+INSERT INTO aluno (nome) VALUES ('John');
+INSERT INTO aluno (nome) VALUES ('Jonas');
+
+##### FILTROS COM TEXTOS #####
+
+SELECT * 
+	FROM aluno
+  	WHERE nome <> 'Jack'; ## Sinal <> ou != significa diferente
+## OU ## 
+SELECT * 
+	FROM aluno
+  	WHERE nome != 'Jack';
+
+## Busca por similares
+ SELECT *
+ 	FROM aluno
+ 	WHERE nome LIKE 'J___';
+
+## Busca por diferentes
+  SELECT *
+ 	FROM aluno
+ 	WHERE nome NOT LIKE 'J___';
 
 
+ ## Busca por todos que começem com 'J'
+ SELECT *
+ 	FROM aluno
+	WHERE nome LIKE 'J%';
 
+## Busca por todos que termina com 'a'
 
+ SELECT *
+ 	FROM aluno
+	WHERE nome LIKE '%a';
+
+## Busca por todos que tem espaço no nome
+ SELECT *
+ 	FROM aluno
+	WHERE nome LIKE '% %';
+
+## Busca por todos que tem começem com qualquer coisa, tenha um 'a', depois qualqer coisa, tenha um 'u', depois termine com qualquer coisa
+ SELECT *
+ 	FROM aluno
+	WHERE nome LIKE '%a%u%';
+
+##### FILTROS COM NUMEROS #####
+
+SELECT * 
+	FROM aluno
+	WHERE cpf IS NULL;
+	
+SELECT * 
+	FROM aluno
+	WHERE cpf IS NOT NULL;
+
+SELECT nome AS "Nome do aluno", 
+	   idade AS "Idade" 
+	FROM aluno 
+	WHERE idade !=30;
+
+	SELECT nome AS "Nome do aluno", 
+	   idade AS "Idade" 
+	FROM aluno 
+	WHERE idade >=27;
+
+## OPERADOR BETWEEN É INCLUSIVO (RETORNA TD ENTRE 27 E 30 INCLUSIVE 27 E 30)
+	
+SELECT nome AS "Nome do aluno", 
+	   idade AS "Idade" 
+	FROM aluno 
+	WHERE idade BETWEEN 27 AND 30;
+
+SELECT * 
+	FROM aluno 
+	WHERE ativo = true;
