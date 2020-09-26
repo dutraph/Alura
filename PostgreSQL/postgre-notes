@@ -1,0 +1,88 @@
+######## Comandos PostgreSQL ########
+
+CREATE DATABASE alura; - Cria um banco.
+## Dessa forma criamos um DB com parametros. ** OBS ** atenção ao uso de ; na quebra de linha.
+CREATE DATABASE teste
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;  ## o -1 significa que nao há limite de conexão.
+\list ou \l - Lista os bancos de dados existentes.
+\connect dbname ou \c dbname - Conextar a um DB diferente.
+DROP DATABASE alura; - Deleta um banco.
+
+** Data Types numericos (https://www.postgresql.org/docs/12/datatype-numeric.html)**
+integer - numero inteiros
+real - numeros decimais com precisao de 6 digitos
+serial - numeros inteiros (apenas positivos) com autoincremento.
+numeric - podemos especificar o numero de casas decimais que queremos no numero. EX: dinheiro NUMERIC(10 TAMANHO, 2 CASAS DECIMAIS ) # 12345678,90
+
+** Data Types texto (https://www.postgresql.org/docs/12/datatype-character.html) **
+varchar(n) - texto de tamanho variavel, exemplo: (até 255 caracteres)
+char(n) - texto de tamanho fixo, Ex: (CPF 11 caracteres)
+text - texto de tamaho indefinido Ex: descrição de produto
+
+** Data Types booleanos (https://www.postgresql.org/docs/12/datatype-boolean.html) **
+boolean - true ou false
+
+ ** Data Types Date/Time (https://www.postgresql.org/docs/12/datatype-datetime.html) **
+date - representa tipo data
+time - representa tipo hora
+timestamp - representa data e hora
+
+## Criando uma tabela com atributos
+CREATE TABLE aluno (
+	id SERIAL,
+	nome VARCHAR(255),
+	cpf CHAR(11),
+	observacao TEXT,
+	idade INTEGER,
+	dinheiro NUMERIC(10,2),
+	altura REAL,
+	ativo BOOLEAN,
+	data_nascimento DATE,
+	hora_aula TIME,
+	matriculado_em TIMESTAMP
+);
+
+## Inserindo dados em uma tabela especificando os valores dos atributos
+
+INSERT INTO aluno (
+	nome,
+	cpf,
+	observacao,
+	idade,
+	dinheiro,
+	altura,
+	ativo,
+	data_nascimento,
+	hora_aula,
+	matriculado_em
+)
+VALUES (
+	'PAULO',
+	'145.771.107-92',
+	'UAHUSDHAGDYASGDASBDAHSBDYASGDAS',
+	30,
+	100.90,
+	1.81,
+	TRUE,
+	'1990-08-23',
+	'17:30:23',
+	'2020-02-08 12:04:42'
+);
+
+SELECT * FROM aluno;
+
+SELECT id, nome, idade, altura, matriculado_em FROM aluno;
+
+
+
+
+
+
+
+
+
+
+
