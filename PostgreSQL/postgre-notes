@@ -184,3 +184,65 @@ SELECT nome AS "Nome do aluno",
 SELECT * 
 	FROM aluno 
 	WHERE ativo = true;
+
+## Filtra por ordem crescente
+SELECT id, nome, idade FROM aluno ORDER BY idade;
+
+## Filtra por ordem decrescente
+SELECT id, nome, idade FROM aluno ORDER BY idade DESC;
+
+
+## Primary Key ** VALORES NAO NULOS E DEVE SER UNICO **
+CREATE TABLE curso (id INTEGER PRIMARY KEY, nome VARCHAR(255) NOT NULL);
+
+## Ao inves de usar NOT NULL UNIQUE, MELHOR É USAR PRIMARY KEY, FAZ A MESMA FUNÇAO
+CREATE TABLE curso (id INTEGER NOT NULL UNIQUE, nome VARCHAR(255) NOT NULL);
+
+## FOREIGN KEY
+/* Criação de tabelas para exemplo FOREIGN KEY */
+
+CREATE TABLE alunos_alura (id SERIAL PRIMARY KEY, nome VARCHAR(255) NOT NULL);
+INSERT INTO alunos_alura (nome) VALUES ('joão');
+INSERT INTO alunos_alura (nome) VALUES ('Paulo');
+
+CREATE TABLE formacoes_alura (id SERIAL PRIMARY KEY, formacao VARCHAR(255) NOT NULL);
+
+INSERT INTO formacoes_alura (formacao) VALUES ('Java');
+INSERT INTO formacoes_alura (formacao) VALUES ('PostgreSQL');
+
+## TABELA FOREIGN KEY - RELACIONA DUAS TABELAS 
+CREATE TABLE aluno_formacao (
+	aluno_id INTEGER,
+	formacao_id INTEGER,
+	PRIMARY KEY (aluno_id, formacao_id),
+	
+	FOREIGN KEY (aluno_id)
+	REFERENCES alunos_alura (id),
+	
+	FOREIGN KEY (formacao_id)
+	REFERENCES formacoes_alura (id)
+);
+
+INSERT INTO aluno_formacao (aluno_id, formacao_id) VALUES(1, 2); /* Inserindo João no curso de PostgreSQL */
+INSERT INTO aluno_formacao (aluno_id, formacao_id) VALUES(2, 1); /* Inserindo Paulo no curso de PostgreSQL */
+INSERT INTO aluno_formacao (aluno_id, formacao_id) VALUES(2, 2); /* Inserindo Paulo no curso de Java */
+
+## JUNTANDO (JOIN PRINCIPAL) E VISUALIZANDO DADOS DE UMA FOREIGN KEY
+
+SELECT alunos_alura.nome AS "Nome Aluno", formacoes_alura.formacao AS "Formação" FROM alunos_alura
+/* 	JOIN   <TABELA FK> ONDE   ATRIBUTO TABELA FK =   ID TABELA ALUNO */
+	JOIN aluno_formacao ON aluno_formacao.aluno_id = alunos_alura.id
+/* 	JOIN <TABELA CURSOS> ONDE  ID TABELA CURSO =   ATRIBUTO TABELA FK */
+	JOIN formacoes_alura ON formacoes_alura.id = aluno_formacao.formacao_id;
+
+
+
+
+
+
+
+
+
+
+
+
