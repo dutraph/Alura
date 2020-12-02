@@ -1,0 +1,2 @@
+- RFC sobre HTTP 
+http://tools.ietf.org/html/rfc2616
