@@ -3,7 +3,7 @@ from random import randint
 def dado20():
     n = randint(1,20)
     if (n == 20):
-        print(f'{n} Critical.')
+        print("{} Critical.".format(n))
     else:
         print(n)
 
