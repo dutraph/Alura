@@ -29,7 +29,7 @@ def novo():
     return redirect('/login')
   return render_template('novo.html', titulo='New Ticket')
 
-@app.route('/criar', methods=['POST',])
+@app.route('/criar', methods=['POST', 'GET'])
 def criar():
   name = request.form['name']
   category = request.form['category']
@@ -44,7 +44,7 @@ def criar():
 def login():
   return render_template('login.html')
 
-@app.route('/autenticar', methods=['POST',])
+@app.route('/autenticar', methods=['POST','GET'])
 def autenticar():
   if 'mestra' == request.form['senha']:
     session['usuario_logado'] = request.form['usuario']
