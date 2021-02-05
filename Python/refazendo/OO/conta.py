@@ -1,4 +1,3 @@
-
 class Conta:
 
     def __init__(self, numero, titular, saldo, limite):
@@ -15,22 +14,23 @@ class Conta:
         self.__saldo+=valor
 
     def saca(self, valor):
-        if valor > (self.__saldo + self.__limite):
-            print("Saldo insuficiente")
-        else:
+        if  (self.__pode_sacar(valor)):
             self.__saldo-=valor
+        else:    
+            print("Saldo insuficiente")
 
     def transfere(self, valor, conta_destino):
-        if valor > (self.__saldo + self.__limite):
-            print("Saldo insificiente.")
-        else:
             self.saca(valor)
             conta_destino.deposita(valor)
             print(f"Valor transferido R${valor}")
     
-    @property
+    @property #usado como getter e nao preciso de parenteses EX: conta.titular e nao conta.titular() 
     def titular(self):
         return self.__titular
+    
+    @titular.setter #tambem nao precisa usar parenteses na criaçao de um titual EX: conta.titular = 'paulo' e nao  conta.titular('paulo') 
+    def titular(self, titular):
+        self.__titular = titular
 
     @property
     def saldo(self):
@@ -46,4 +46,9 @@ class Conta:
 
     @staticmethod
     def codigo_banco():
-        return "001"
+        bancos = {'bradesco': '001', 'Itau': '002', 'caixa': '003'}  # Acesso é feito da seguinte forma: <Class name>.codigo_banco(), podemos add numa vaiavel e acessar os valores individuais: bancos = Conta.codigo_banco(), bancos['']
+        return bancos
+
+    def __pode_sacar(self, valor):
+        valor_disponivel = self.__saldo + self.__limite
+        return valor <=valor_disponivel

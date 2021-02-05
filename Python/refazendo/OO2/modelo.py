@@ -1,6 +1,3 @@
-from turtle import fd
-
-
 class Programa:
     def __init__(self, nome, ano):
         self._nome = nome.title()
@@ -31,7 +28,7 @@ class Programa:
 
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
-        super().__init__(nome, ano) # Chama o init da class mãe
+        super().__init__(nome, ano) # Chama o __init__ da class mãe
         self.duracao = duracao
 
     def __str__(self): #usando o metodo especial __str__ nao precisamos dar um nome ao metodo
@@ -61,7 +58,7 @@ class Serie(Programa):
 
 class Playlist: 
     def __init__(self,nome, programas):
-        self.nome = nome;
+        self.nome = nome
         self._programas = programas
 
     def __getitem__(self, item):
